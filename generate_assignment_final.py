@@ -2,12 +2,10 @@ import matplotlib.pyplot as plt
 import networkx as nx
 from fpdf import FPDF
 import json
+import matplotlib.patches as patches
 
 # Part 1: Generate Diagram
 def generate_diagram():
-    import matplotlib.pyplot as plt
-    import matplotlib.patches as patches
-
     fig, ax = plt.subplots(figsize=(10, 6), facecolor='white')
     ax.axis('off')
 
@@ -15,10 +13,8 @@ def generate_diagram():
     boxes = {
         "Input Handler": (0.2, 0.7),
         "Memory Module": (0.5, 0.9),
-        "LLM Reasoning
-Controller": (0.5, 0.5),
-        "RAG Retrieval
-Pipeline": (0.8, 0.9),
+        "LLM Reasoning\nController": (0.5, 0.5),
+        "RAG Retrieval\nPipeline": (0.8, 0.9),
         "Tool Executor": (0.8, 0.5),
         "Output Formatter": (0.5, 0.1)
     }
@@ -47,32 +43,22 @@ Pipeline": (0.8, 0.9),
                     arrowprops=dict(arrowstyle="->", color="gray", lw=2, connectionstyle=connection))
 
     # Input to Controller
-    draw_arrow("Input Handler", "LLM Reasoning
-Controller", offset_start=(box_w/2, -0.05), offset_end=(-box_w/2, 0.15))
+    draw_arrow("Input Handler", "LLM Reasoning\nController", offset_start=(box_w/2, 0), offset_end=(-box_w/2, 0.1))
 
     # Controller to Memory and back
-    draw_arrow("LLM Reasoning
-Controller", "Memory Module", offset_start=(-0.05, box_h/2), offset_end=(-0.05, -box_h/2))
-    draw_arrow("Memory Module", "LLM Reasoning
-Controller", offset_start=(0.05, -box_h/2), offset_end=(0.05, box_h/2))
+    draw_arrow("LLM Reasoning\nController", "Memory Module", offset_start=(-0.05, box_h/2), offset_end=(-0.05, -box_h/2))
+    draw_arrow("Memory Module", "LLM Reasoning\nController", offset_start=(0.05, -box_h/2), offset_end=(0.05, box_h/2))
 
     # Controller to RAG and back
-    draw_arrow("LLM Reasoning
-Controller", "RAG Retrieval
-Pipeline", offset_start=(0.08, 0.08), offset_end=(-0.08, -0.08), connection="arc3,rad=0.1")
-    draw_arrow("RAG Retrieval
-Pipeline", "LLM Reasoning
-Controller", offset_start=(-0.1, -0.05), offset_end=(0.1, 0.05), connection="arc3,rad=0.1")
+    draw_arrow("LLM Reasoning\nController", "RAG Retrieval\nPipeline", offset_start=(0.08, 0.08), offset_end=(-0.08, -0.08), connection="arc3,rad=0.1")
+    draw_arrow("RAG Retrieval\nPipeline", "LLM Reasoning\nController", offset_start=(-0.1, -0.05), offset_end=(0.1, 0.05), connection="arc3,rad=0.1")
 
     # Controller to Tool and back
-    draw_arrow("LLM Reasoning
-Controller", "Tool Executor", offset_start=(box_w/2, 0.05), offset_end=(-box_w/2, 0.05))
-    draw_arrow("Tool Executor", "LLM Reasoning
-Controller", offset_start=(-box_w/2, -0.05), offset_end=(box_w/2, -0.05))
+    draw_arrow("LLM Reasoning\nController", "Tool Executor", offset_start=(box_w/2, 0.05), offset_end=(-box_w/2, 0.05))
+    draw_arrow("Tool Executor", "LLM Reasoning\nController", offset_start=(-box_w/2, -0.05), offset_end=(box_w/2, -0.05))
 
     # Controller to Output
-    draw_arrow("LLM Reasoning
-Controller", "Output Formatter", offset_start=(0, -box_h/2), offset_end=(0, box_h/2))
+    draw_arrow("LLM Reasoning\nController", "Output Formatter", offset_start=(0, -box_h/2), offset_end=(0, box_h/2))
 
     plt.title("System Architecture Diagram", fontsize=16, fontweight='bold', y=1.0)
     plt.savefig("architecture_diagram.png", dpi=300, bbox_inches='tight')
