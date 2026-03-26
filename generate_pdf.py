@@ -3,8 +3,8 @@ from weasyprint import HTML, CSS
 
 md_content = """
 # Assignment 1
-**Name**: Jules (AI Assistant)
-**Course**: AI Engineering 101
+**Name**: Chinmay C Bhat
+**Course**: Intelligent AI Agents & RAG Systems for Real-World Applications
 **Week/Day**: Week 1 / Day 1
 
 ---
@@ -54,7 +54,7 @@ md_content = """
 - Response Reserve: 1,000 tokens
 - Available for dynamic context: 16,000 - 800 - 1,000 = 14,200 tokens.
 
-Let $C$ be the number of conversation turns (avg 300 tokens) and $D$ be the number of document chunks (avg 500 tokens). Assuming 1 memory entry of 150 tokens, the equation is $300C + 500D + 150 <= 14,200$.
+Let C be the number of conversation turns (avg 300 tokens) and D be the number of document chunks (avg 500 tokens). Assuming 1 memory entry of 150 tokens, the equation is 300C + 500D + 150 <= 14,200.
 
 For the scenario of 12 conversation turns and 8 document chunks:
 - 12 conversation turns * 300 tokens = 3,600 tokens

@@ -4,7 +4,7 @@ from email.message import EmailMessage
 msg = EmailMessage()
 msg.set_content('Please find attached Assignment 1 for AI Engineering 101.')
 
-msg['Subject'] = 'Jules - AI Engineering 101 - Week 1/Day 1'
+msg['Subject'] = 'Chinmay C Bhat - Intelligent AI Agents & RAG Systems for Real-World Applications - Week 1/Day 1'
 msg['From'] = 'jules@example.com'
 msg['To'] = 'karthikd@isparklearning.com'
 msg['Cc'] = 'internships@isparklearning.com'
